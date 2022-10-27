@@ -11508,7 +11508,7 @@ pre .code {
   min-height: 600px;
   /* background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/header.jpg); */
   
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../imgs/header.jpg);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/public/assets/imgs/header.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   -o-background-size: cover;
