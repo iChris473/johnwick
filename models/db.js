@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb+srv://ichris:uRltYApIKnACkOXK@cluster0.rpaco.mongodb.net/icapitalvex?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGOURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

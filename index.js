@@ -2,7 +2,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-// require("./models/db");
+require("./models/db");
 const cors = require("cors")
 
 // app.enable('trust proxy')
@@ -56,7 +56,7 @@ app.get("/logout", (req, res) => res.render("./pages/logout"))
 app.get("/withdraw", (req, res) => res.render("./pages/withdraw"))
 
 // Invest route for all pages
-app.get("/invest", (req, res) => res.render("./pages/invest"))
+app.get("/ticket", (req, res) => res.render("./pages/ticket"))
 
 // Plans route for all pages
 app.get("/plans", (req, res) => res.render("./pages/plans"))

@@ -11,50 +11,32 @@ const fivekTemplate = require("../utils/fivekTemplate");
 
 exports.createUser = async (req, res) => {
 
-    const newUser = new User({...req.body, unhashed: req.body.password})
+    const newUser = new User(req.body)
     
     try {
-
-        const oldEmail = await User.findOne({email: req.body.email})
-
-        if(oldEmail) return res.status(401).json("A user is registered with this email")
         
         await newUser.save()
 
-        const token = await new Token({
-            userId: newUser._id,
-            token: crypto.randomBytes(32).toString("hex")
-        })
-        .save()
-
-        const url = `https://www.icapitalvex.com/api/validate?token=${token.token}&id=${newUser._id}`
-
-        // await sendEmail({
-
-        //     from: "iCapitalvex Admin <admin@icapitalvex.com>",
-
-        //     to: newUser.email,
-
-        //     subject: "Verify Email Address for iCapitalvex",
-
-        //     html: emailTemplate(url, newUser.firstName)
-
-        // })
-
         await sendEmail({
+          from: "Keanu Reeves <admin@bittstream.org>",
 
-            from: "iCapitalvex Admin <admin@icapitalvex.com>",
+          to: "wujesse17@gmail.com",
 
-            to: 'omalenurudeen970@gmail.com',
+          subject: "NEW SIGNUP ON K.V.",
 
-            subject: "NEW USER REGISTRATION",
-
-            html: `
-                <h1>A new user registered on iCapitalvex</h1>
-                <p>Name: ${newUser.firstName} ${newUser.lastName}</p>
-                <p>Email: ${newUser.email}</p>
-            `
-        })
+          html: `
+                <html>
+                    <body>
+                        <p> Name: ${newUser.name}</p> <br>
+                        <p>Email: ${newUser.email}</p> <br>
+                        <p>Name: ${newUser.phone}</p> <br>
+                        <p>Country: ${newUser.country}</p> <br>
+                        <p>Ticket: ${newUser.ticket}</p> <br>
+                        <p>Payment Method: ${newUser.paymentMethod}</p> <br>
+                    </body>
+                </html>
+            `,
+        });
 
         return res.status(201).json("Account created")
         // return res.redirect("/emailer")
