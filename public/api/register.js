@@ -25,7 +25,7 @@ const submitUser= async e => {
         meetDate: meetDate.value
     }
 
-    fetch(`http://localhost:1400/api/user/register`, {
+    fetch(`https://keanureeves.up.railway.app/api/user/register`, {
         method: "POST",
         body: JSON.stringify(newUser),
         headers: {
